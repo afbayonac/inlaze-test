@@ -18,6 +18,8 @@ export class UserService {
         email: createUserDto.email,
       },
     });
+    console.log('userExist', userExist);
+    if (userExist) return;
 
     const user = await this.userRepository.save(createUserDto);
 

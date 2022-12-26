@@ -15,5 +15,21 @@ export class AuthService {
 
   async login(LoginAuthBody: LoginAuthDto) {
     const { email, password } = LoginAuthBody;
+    console.log({ email, password });
+    const user = await this.userRepository.findOne({
+      where: { email },
+    });
+
+    console.log({ user });
+    if (!user) return;
+
+    if (user?.password !== password) return;
+
+    console.log('ok');
+    return this.jwtAuthService.sign({
+      name: user.name,
+      email: user.email,
+      nickname: user.nickname,
+    });
   }
 }
