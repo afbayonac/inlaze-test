@@ -18,7 +18,7 @@ export class UserService {
         email: createUserDto.email,
       },
     });
-    console.log('userExist', userExist);
+
     if (userExist) return;
 
     const user = await this.userRepository.save(createUserDto);
@@ -27,13 +27,5 @@ export class UserService {
       ...user,
       password: '******',
     };
-  }
-
-  findAll() {
-    return `This action returns all user`;
-  }
-
-  findOne(email: string) {
-    return `This action returns a #${email} user`;
   }
 }

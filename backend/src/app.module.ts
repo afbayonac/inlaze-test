@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { PostModule } from './post/post.module';
 
 const db = TypeOrmModule.forRoot({
   type: 'sqlite',
@@ -12,7 +13,7 @@ const db = TypeOrmModule.forRoot({
   synchronize: true,
 });
 @Module({
-  imports: [db, UserModule, AuthModule],
+  imports: [db, UserModule, AuthModule, PostModule],
   controllers: [AppController],
   providers: [AppService],
 })
