@@ -11,8 +11,20 @@ export class UserService {
     private readonly userRepository: Repository<User>,
   ) {}
 
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+  async create(createUserDto: CreateUserDto) {
+    console.log('create', createUserDto);
+    const userExist = await this.userRepository.findOne({
+      where: {
+        email: createUserDto.email,
+      },
+    });
+
+    const user = await this.userRepository.save(createUserDto);
+
+    return {
+      ...user,
+      password: '******',
+    };
   }
 
   findAll() {
