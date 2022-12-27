@@ -1,7 +1,57 @@
 :root {
-  font-size: 22px;
   --base-color: #16202a;
   --main-color: #f9fd6d;
   --gray-01-color: #b3def0;
-  --gray-01-color: #d9d9d9;
+  --gray-02-color: #d9d9d9;
+  font-size: 16px;
+  font-family: sans-serif;
+  color: #FFF;
+}
+
+body {
+  background-color: var(--base-color);
+}
+
+
+button {
+  height: 40px;
+  border: 1px solid var(--gray-02-color);
+  background-color: var(--base-color);
+  color: var(--main-color);
+  border-radius: 20px;
+  max-width: 375px;
+  width: 100%;
+  font-weight: 600;
+  font-size: 14px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+button[data-type='primary'] {
+  border: none;
+  background-color: var(--gray-02-color);
+  color: var(--base-color);
+}
+
+
+label {
+  display: block;
+  color: var(--main-color);
+  font-size: 12px;
+}
+
+input[type="email"], input[type="password"] {
+  color: #FFF;
+  width: 100%;
+  max-width: 375px;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 16px;
+  background-color: var(--base-color);
+  border: 1px solid var(--gray-02-color);
+  box-sizing: border-box;
+}
+
+input[type="email"]:focus, input[type="password"]:focus {
+  outline: none;
 }

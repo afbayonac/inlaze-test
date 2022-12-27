@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/user/entities/user.entity';
 import { Repository } from 'typeorm';
@@ -21,9 +21,10 @@ export class AuthService {
     });
 
     console.log({ user });
-    if (!user) return;
+    if (!user) throw new HttpException('Bad Request', HttpStatus.BAD_REQUEST);
 
-    if (user?.password !== password) return;
+    if (user?.password !== password)
+      throw new HttpException('Bad Request', HttpStatus.BAD_REQUEST);
 
     console.log('ok');
     return this.jwtAuthService.sign({
