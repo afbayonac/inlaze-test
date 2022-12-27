@@ -15,7 +15,7 @@ export class User {
   @Column({ type: 'varchar', length: 16, nullable: false })
   password: string;
 
-  @OneToMany((type) => Post, (post: Post) => post.id)
+  @OneToMany(() => Post, (post: Post) => post.id)
   @JoinColumn()
   post: Post[];
 }

@@ -20,7 +20,7 @@ export class Post {
   @Column({ type: 'varchar', length: 80, nullable: false })
   description: string;
 
-  @ManyToOne((type) => User, (user) => user.email)
+  @ManyToOne(() => User, (user) => user.email)
   @JoinColumn()
   user: User;
 
